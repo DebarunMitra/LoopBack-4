@@ -5,10 +5,16 @@ import {
   RestExplorerComponent,
 } from '@loopback/rest-explorer';
 import {RepositoryMixin} from '@loopback/repository';
-import {RestApplication} from '@loopback/rest';
+import {RestApplication, RouterSpec} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+
+const legacyApp = require('./express-app').legacyApp;
+
+// const openApiSpecForLegacyApp: RouterSpec = {
+//   // insert your spec here, your 'paths', 'components', and 'tags' will be used
+// };
 
 export class SaishoApp extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -38,5 +44,7 @@ export class SaishoApp extends BootMixin(
         nested: true,
       },
     };
+
+    this.mountExpressRouter('/dogs', legacyApp);
   }
 }

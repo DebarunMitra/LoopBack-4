@@ -1,3 +1,4 @@
 export * from './ping.controller';
 export * from './hello.controller';
 export * from './note.controller';
+export * from './greet.controller';

@@ -42,6 +42,7 @@ export class PingController {
   })
   ping(): object {
     // Reply with a greeting, the current time, the url, and request headers
+    console.log('ping');
     return {
       greeting: 'Hello from LoopBack',
       date: new Date(),
